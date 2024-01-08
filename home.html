@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Second Web Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: url('milky.gif') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .logo {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            width: 140px; /* Increased size of the logo */
+            height: auto;
+        }
+
+        .header {
+            position: fixed;
+            top: 10px;
+            right: 10px; /* Adjusted position to the right */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+
+        .tab {
+            padding: 10px; /* Increased space in the buttons */
+            cursor: pointer;
+            background: linear-gradient(to right, #080808, #1c1c1c); /* Subtle shiny black color for the buttons */
+            color: white;
+            border-radius: 5px; /* Square-shaped tabs */
+            position: sticky;
+            transition: opacity 1s ease, background 1s ease; /* Slow fade animation for buttons */
+            text-decoration: none; /* Remove the default underline */
+            display: inline-block;
+            margin: 0 2px; /* Reduced margin between buttons */
+        }
+
+        .tab:hover {
+            opacity: 0.7;
+            background: linear-gradient(to right, #1c1c1c, #080808); /* Darken the button on hover */
+        }
+
+        .animation-text-container {
+            text-align: center;
+            color: rgb(240, 255, 37);
+            font-family: 'Gothic', sans-serif; /* Gothic font */
+            font-size: 38px;
+            text-transform: uppercase;
+            background-color: transparent; /* Transparent background */
+            padding: 20px;
+            border-radius: 6px;
+            position: relative;
+            width: 80%; /* Adjusted the width of the container */
+            right: 50%;
+        }
+
+        .animation-text {
+            margin: 0;
+            line-height: 1.5; /* Adjust the line height for better readability */
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 2px solid white; /* Typing cursor */
+            animation: typing 5s steps(40) 1s infinite alternate; /* Slower typing animation with loop */
+        }
+
+        .dots {
+            position: absolute;
+            top: 50%;
+            left: 10px; /* Adjusted left position */
+            transform: translateY(-50%);
+        }
+
+        .dot {
+            width: 10px; /* Increased size of the dots */
+            height: 10px; /* Increased size of the dots */
+            border-radius: 50%;
+            margin: 5px 0; /* Adjusted the space between dots */
+            display: block;
+            background-color: white; /* Adjusted dot color */
+            animation: dotAnimation 3s infinite alternate; /* Slower dot animation with loop */
+        }
+
+        .fullscreen-toggle {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+            transition: opacity 0.5s ease;
+        }
+
+        .fullscreen-toggle:hover {
+            opacity: 0.7;
+        }
+
+        .arrow {
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 10px 10px 0 10px;
+            border-color: transparent transparent transparent white;
+            margin-bottom: 5px;
+        }
+
+        .arrow-up {
+            transform: rotate(180deg);
+        }
+
+        .back-button {
+            position: fixed;
+            top: 10px;
+            left: 50px;
+            cursor: pointer;
+            color: white;
+            font-size: 16px;
+            transition: opacity 0.5s ease;
+        }
+
+        .back-button:hover {
+            opacity: 0.7;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes dotAnimation {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.5); }
+        }
+    </style>
+</head>
+<body>
+    <img src="logo.gif" alt="Logo" class="logo">
+    
+    <div class="header">
+        <a href="ai-automation.html" class="tab">AI Automation</a>
+        <a href="ai-mouse.html" class="tab">AI Mouse</a>
+        <a href="ascii-art.html" class="tab">ASCII Art</a>
+        <a href="text-to-image.html" class="tab">Text to Image Generator</a>
+    </div>
+
+    <div class="animation-text-container">
+        <p id="zenith" class="animation-text">"<b><i><u>"ZENITH"</u></i></b></p>
+        <p id="discover" class="animation-text"> A Place <br>
+             to<br>
+              discover<br>
+               artificial intelligence <br></p>
+    </div>
+
+    <div class="dots">
+        <div class="dot"></div>
+        <div class="dot" style="background-color: #0f0;"></div> <!-- Green dot -->
+        <div class="dot" style="background-color: #00f;"></div> <!-- Blue dot -->
+        <div class="dot" style="background-color: #ff0;"></div> <!-- Yellow dot -->
+        <div class="dot" style="background-color: #f0f;"></div> <!-- Purple dot -->
+    </div>
+
+    <div class="fullscreen-toggle" onclick="toggleFullscreen()">
+        <div class="arrow"></div>
+        <div class="arrow arrow-up"></div>
+    </div>
+
+    <div class="back-button" onclick="goBack()">Back</div>
+
+    <script>
+        function toggleFullscreen() {
+            const elem = document.documentElement;
+
+            if (!document.fullscreenElement) {
+                elem.requestFullscreen().catch(err => {
+                    console.error(`Error attempting to enable full-screen mode: ${err.message}`);
+                });
+            } else {
+                document.exitFullscreen();
+            }
+        }
+
+        function goBack() {
+            window.location.href = "index.html";
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            // Trigger full screen on page load
+            document.documentElement.requestFullscreen();
+        });
+    </script>
+</body>
+</html>
