@@ -56,6 +56,15 @@
 <body>
     <a href="home.html" class="back-button">Back to Home</a>
     <button class="start-button" onclick="runAiFunction()>Start</button>
+
+   <script>
+    function runAiFunction() {
+        fetch('run_python_script.php')
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
+    }
+    </script>
 </body>
 
 </html>
