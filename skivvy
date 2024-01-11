@@ -6,17 +6,7 @@ import datetime
 import wikipedia #pip install wikipedia
 import webbrowser
 import os
-from flask import Flask, jsonify
 import requests
-
-app = Flask(__name__)
-
-@app.route('/run_python_function')
-def run_python_function():
-    # Your Python function logic goes here
-    result = "Python function executed successfully!"
-    MainExecution();
-    return jsonify(result=result)
 
 
 
@@ -146,6 +136,6 @@ def MicExecution():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    MainExecution()
 
 
