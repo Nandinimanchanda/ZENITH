@@ -154,7 +154,7 @@
     <img src="logo.gif" alt="Logo" class="logo">
     
     <div class="header">
-        <a href="ai-automation.html" class="tab">AI Automation</a>
+        <a href="ai-automation.html" class="tab" onclick="runPythonFunction()">AI Automation</a>
         <a href="ai-mouse.html" class="tab">AI Mouse</a>
         <a href="ascii-art.html" class="tab">ASCII Art</a>
         <a href="text-to-image.html" class="tab">Text to Image Generator</a>
@@ -182,7 +182,16 @@
     </div>
 
     <div class="back-button" onclick="goBack()">Back</div>
-
+    <script>
+    function runPythonFunction() {
+        fetch('/run_python_function')
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
+    }
+    </script>
+ 
+ 
     <script>
         function toggleFullscreen() {
             const elem = document.documentElement;
