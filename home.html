@@ -184,7 +184,7 @@
     <div class="back-button" onclick="goBack()">Back</div>
     <script>
     function runPythonFunction() {
-        fetch('/run_python_function')
+        fetch('run_python_script.php')
             .then(response => response.json())
             .then(data => console.log(data))
             .catch(error => console.error('Error:', error));
