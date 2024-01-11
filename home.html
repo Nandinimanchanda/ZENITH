@@ -190,6 +190,16 @@
             .catch(error => console.error('Error:', error));
     }
     </script>
+
+    <script>
+    function runAsciiFunction() {
+        fetch('run_ascii_art.php')
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
+    }
+    </script>
+
     <script>
     function runMouseFunction() {
         fetch('run_ai_mouse.php')
