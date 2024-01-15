@@ -11,7 +11,7 @@ import tkinter as tk
 from PIL import Image
 
 
-global text_content
+
 text_content = "............Response.............."
 text_content2 ="...............FAQ.................\n\n 1. Open google\n\n 2. Open Youtube\n\n 3. Play Music\n\n"
 def start():
