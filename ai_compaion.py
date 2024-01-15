@@ -165,6 +165,8 @@ def MicExecution():
 
 root = tk.Tk()
 root.title("Ai_Companion")
+root.geometry("400x400")
+
 
 left_frame = create_frame(root, "left", "blue")
 mid_frame = create_frame(root, "left", "black")
