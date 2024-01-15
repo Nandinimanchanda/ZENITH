@@ -236,7 +236,7 @@ def animation(count):
 
     root.after(50, lambda: animation(count))
 
-threading.Thread(target=animation(count))
+threading.Thread(target=animation(0))
 
 root.mainloop()
 
