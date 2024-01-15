@@ -17,7 +17,7 @@ text_content2 ="...............FAQ.................\n\n 1. Open google\n\n 2. Op
 def start():
     count=0
     threading.Thread(target=MainExecution).start()
-    threading.Thread(target=animation(count))
+    
 
 def create_wrapped_label(master, text, wraplength):
     label = tk.Label(master, text=text, wraplength=wraplength,height=100,width=200)
@@ -235,6 +235,8 @@ def animation(count):
         count = 0
 
     root.after(50, lambda: animation(count))
+
+threading.Thread(target=animation(count))
 
 root.mainloop()
 
