@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,94 +11,39 @@
             padding: 0;
             overflow: hidden;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: url('milky.gif') no-repeat center center fixed;
+            background: url('animated.gif') no-repeat center center fixed;
             background-size: cover;
             display: flex;
             align-items: center;
             justify-content: center;
             height: 100vh;
         }
-
-        .logo {
-            position: fixed;
-            top: 10px;
-            left: 10px;
-            width: 140px; /* Increased size of the logo */
-            height: auto;
-        }
-
-        .header {
-            position: fixed;
-            top: 10px;
-            right: 10px; /* Adjusted position to the right */
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: white;
-        }
-
-        .tab {
-            padding: 10px; /* Increased space in the buttons */
-            cursor: pointer;
-            background: linear-gradient(to right, #080808, #1c1c1c); /* Subtle shiny black color for the buttons */
-            color: white;
-            border-radius: 5px; /* Square-shaped tabs */
-            position: sticky;
-            transition: opacity 1s ease, background 1s ease; /* Slow fade animation for buttons */
-            text-decoration: none; /* Remove the default underline */
-            display: inline-block;
-            margin: 0 2px; /* Reduced margin between buttons */
-        }
-
-        .tab:hover {
-            opacity: 0.7;
-            background: linear-gradient(to right, #1c1c1c, #080808); /* Darken the button on hover */
-        }
-
-        .animation-text-container {
+        /* Add new styles for the "ARASTU" text */
+        .arastu-text {
             text-align: center;
-            color: rgb(240, 255, 37);
-            font-family: 'Gothic', sans-serif; /* Gothic font */
-            font-size: 38px;
-            text-transform: uppercase;
-            background-color: transparent; /* Transparent background */
-            padding: 20px;
-            border-radius: 6px;
-            position: relative;
-            width: 80%; /* Adjusted the width of the container */
-            right: 50%;
-        }
-
-        .animation-text {
-            margin: 0;
-            line-height: 1.5; /* Adjust the line height for better readability */
-            overflow: hidden;
-            white-space: nowrap;
-            border-right: 2px solid white; /* Typing cursor */
-            animation: typing 5s steps(40) 1s infinite alternate; /* Slower typing animation with loop */
-        }
-
-        .dots {
+            font-size: 36px;
+            font-weight: bold;
+            color: white;
+            margin-top: 2px;
             position: absolute;
-            top: 50%;
-            left: 10px; /* Adjusted left position */
-            transform: translateY(-50%);
+            top: 10%;
+            animation: pulsateAnimation 1.5s infinite alternate;
         }
-
-        .dot {
-            width: 10px; /* Increased size of the dots */
-            height: 10px; /* Increased size of the dots */
-            border-radius: 50%;
-            margin: 5px 0; /* Adjusted the space between dots */
-            display: block;
-            background-color: white; /* Adjusted dot color */
-            animation: dotAnimation 3s infinite alternate; /* Slower dot animation with loop */
+        
+        @keyframes pulsateAnimation {
+            from {
+                transform: scale(1);
+            }
+            to {
+                transform: scale(1.2);
+            }
         }
+        
 
         .fullscreen-toggle {
             position: fixed;
             top: 10px;
-            left: 10px;
+            right: 10px;
             cursor: pointer;
             display: flex;
             flex-direction: column;
@@ -125,47 +71,158 @@
             transform: rotate(180deg);
         }
 
-        .back-button {
-            position: fixed;
-            top: 10px;
-            left: 50px;
+        /* Add styles for the buttons */
+        .header {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end; /* Align buttons to the right */
+        }
+
+        .tab {
+            padding: 20px 40px; /* Adjusted button size */
             cursor: pointer;
-            color: white;
-            font-size: 16px;
-            transition: opacity 0.5s ease;
+            background: rgba(255, 255, 255, 0.5);
+            color: #333;
+            border: 2px solid #eee;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(200, 200, 200, 0.8);
+            transition: opacity 1s ease, background 1s ease, transform 0.5s ease, box-shadow 0.5s ease;
+            text-decoration: none;
+            margin-bottom: 10px;
+            display: inline-block;
+            position: relative;
+            text-align: center;
+            font-weight: bold;
+            font-size: 20px; /* Increased font size */
+            overflow: hidden;
         }
 
-        .back-button:hover {
+        .tab::before,
+        .tab::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            right: 10%; /* Adjusted position */
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+        }
+
+        .tab::before {
+            border-bottom: 15px solid rgba(200, 200, 200, 0.8);
+            top: -15px;
+        }
+
+        .tab::after {
+            border-top: 15px solid rgba(200, 200, 200, 0.8);
+            bottom: -15px;
+        }
+
+        .tab:hover {
             opacity: 0.7;
+            background: linear-gradient(to right, #1c1c1c, #080808);
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(150, 150, 150, 0.8);
         }
 
-        @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
+        /* Add styles for the dots */
+        .dots {
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
         }
 
-        @keyframes dotAnimation {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.5); }
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin: 5px 0;
+            display: block;
+            background-color: white;
+            animation: dotAnimation 3s infinite alternate;
+        }
+
+        /* Add new styles for the logo */
+        .logo {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 150px; /* Adjust as needed */
+            height: auto;
         }
     </style>
-</head>
-<body>
-    <img src="logo.gif" alt="Logo" class="logo">
-    
-    <div class="header">
-        <a href="ai-automation.html" class="tab">AI Automation</a>
-        <a href="ai-mouse.html" class="tab" onclick="runMouseFunction()">AI Mouse</a>
-        <a href="ascii-art.html" class="tab">ASCII Art</a>
-        <a href="text-to-image.html" class="tab">Text to Image Generator</a>
-    </div>
 
-    <div class="animation-text-container">
-        <p id="zenith" class="animation-text">"<b><i><u>"ZENITH"</u></i></b></p>
-        <p id="discover" class="animation-text"> A Place <br>
-             to<br>
-              discover<br>
-               artificial intelligence <br></p>
+    <script>
+        function toggleFullscreen() {
+            const elem = document.documentElement;
+
+            if (!document.fullscreenElement) {
+                elem.requestFullscreen().catch(err => {
+                    console.error(`Error attempting to enable full-screen mode: ${err.message}`);
+                });
+            } else {
+                document.exitFullscreen();
+            }
+        }
+
+        function runPythonProgram(button) {
+            fetch('/run_python_program', { method: 'GET' })
+                .then(response => response.text())
+                .then(data => {
+                    alert(data);
+                    // Change the button color back to its original state
+                    button.style.backgroundColor = "";
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        function aimouse(button) {
+            fetch('/ai_mouse', { method: 'GET' })
+                .then(response => response.text())
+                .then(data => {
+                    alert(data);
+                    // Change the button color back to its original state
+                    button.style.backgroundColor = "";
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        function asciiart(button) {
+            fetch('/ascii_art', { method: 'GET' })
+                .then(response => response.text())
+                .then(data => {
+                    alert(data);
+                    // Change the button color back to its original state
+                    button.style.backgroundColor = "";
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        function changeColor(button) {
+            button.style.backgroundColor = "#FFD700"; /* Change to golden color on click */
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            // Trigger full screen on page load
+            document.documentElement.requestFullscreen();
+        });
+    </script>
+</head>
+
+<body>
+    <img src="logo2.gif" alt="Logo" class="logo"> <!-- Updated logo position -->
+
+    <div class="arastu-text">ARASTU</div> <!-- Added ARASTU text -->
+
+    <div class="header">
+        <!-- Use a single button for the desired action -->
+        <button class="tab" onclick="runPythonProgram(this); changeColor(this);">Ai Companion</button>
+        <button class="tab" onclick="aimouse(this); changeColor(this);">Ai Mouse</button>
+        <button class="tab" onclick="asciiart(this); changeColor(this);">Ascii Art</button>
     </div>
 
     <div class="dots">
@@ -180,57 +237,6 @@
         <div class="arrow"></div>
         <div class="arrow arrow-up"></div>
     </div>
-
-    <div class="back-button" onclick="goBack()">Back</div>
-    <script>
-    function runPythonFunction() {
-        fetch('run_python_script.php')
-            .then(response => response.json())
-            .then(data => console.log(data))
-            .catch(error => console.error('Error:', error));
-    }
-    </script>
-
-    <script>
-    function runAsciiFunction() {
-        fetch('run_ascii_art.php')
-            .then(response => response.json())
-            .then(data => console.log(data))
-            .catch(error => console.error('Error:', error));
-    }
-    </script>
-
-    <script>
-    function runMouseFunction() {
-        fetch('run_ai_mouse.php')
-            .then(response => response.json())
-            .then(data => console.log(data))
-            .catch(error => console.error('Error:', error));
-    }
-    </script>
- 
- 
-    <script>
-        function toggleFullscreen() {
-            const elem = document.documentElement;
-
-            if (!document.fullscreenElement) {
-                elem.requestFullscreen().catch(err => {
-                    console.error(`Error attempting to enable full-screen mode: ${err.message}`);
-                });
-            } else {
-                document.exitFullscreen();
-            }
-        }
-
-        function goBack() {
-            window.location.href = "index.html";
-        }
-
-        document.addEventListener("DOMContentLoaded", function () {
-            // Trigger full screen on page load
-            document.documentElement.requestFullscreen();
-        });
-    </script>
 </body>
+
 </html>
