@@ -136,7 +136,7 @@ def Listen():
         print("Recognizing...")
         text_content=text_content+"\n\nRecognizing"
         scrollable_label.configure(text=text_content)
-        query = r.recognize_google(audio,language="hi") # type: ignore
+        query = r.recognize_google(audio) # type: ignore
         
 
     except:
