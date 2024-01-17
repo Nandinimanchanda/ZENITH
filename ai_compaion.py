@@ -103,7 +103,8 @@ def MainExecution():
           print(d)
           Speak(d)
            
-
+translate = Translator()
+lang="en"
 #Functions
 #Speak  
 def Speak(Text):
@@ -112,12 +113,10 @@ def Speak(Text):
     voices = engine.getProperty('voices')
     engine.setProperty('voices',voices[1].id)
     engine.setProperty('rate',170)
-    print("")
-    print(f"You : {Text}.")
-    print("")
-    text_content=text_content+"\n\n"+Text # type: ignore
-    scrollable_label.configure(text=text_content)
-    engine.say(Text)
+    transText = translate.translate(Text, src='en', dest=lang)
+    text_content=text_content+"\n\n"+transText # type: ignore
+    scrollable_label.configure(text =text_content)
+    engine.say(transText)
     engine.runAndWait()
 
 # 1. listen 
@@ -149,8 +148,9 @@ def Listen():
 # 2 - Translation
 
 def TranslationHinToEng(Text):
+    global lang
     line = str(Text)
-    translate = Translator()
+    lang = translate.detect(line).lang
     result = translate.translate(line)
     data = result.text #  type: ignore
     print(f"You : {data}.")
